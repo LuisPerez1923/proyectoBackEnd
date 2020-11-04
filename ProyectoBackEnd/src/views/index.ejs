@@ -1,0 +1,64 @@
+
+        <%- include('partials/_header') %>
+       
+        <main class="contenido-principal" id="listaProductos"> <!--aqui comienza mi seccion main-->
+            <div class="contenedor">
+                <h2 class="centrar-texto">nuestros productos</h2>
+
+                <div class="contenedor-productos"> <!--aqui empieza contenedor de productos-->
+    
+                    <% for(var i = 0; i < productos.length; i++) { %>
+                    <div class="producto"> 
+                        <div class="contenido-producto"> 
+                            <img src="<%= productos[i].urlImgP %>" alt="">
+        
+                            <div class="precio-producto"> 
+                                <h3><%= productos[i].nombreP %></h3>
+                                <p><%= "$" + productos[i].precioP %></p>
+                            </div>
+        
+                            <p><%= productos[i].descripcionP %></p>
+        
+                            <button class="btn btn-primary">Comprar</button>
+                            <a href="/delete/<%= productos[i]._id %>" class="btn btn-primary centrar-texto" >Borrar</a>
+                            <a href="/edit/<%= productos[i]._id %>" class="btn btn-primary centrar-texto">Editar</a>
+                        </div> 
+                    </div>
+                    <% } %>
+    
+                </div> <!--aqui termina contenedor de productos-->
+            </div>
+            
+        </main> <!--aqui termina mi seccion main-->
+
+        <div class="parallax">
+
+        </div>
+           
+
+        <div class="formulario-registro contenedor">
+            <h2 class="centrar-texto">Resgistro de producto</h2>
+            <form class="agregarProducto" action="/add" method="POST">
+                <fieldset>
+                    <legend>Información del Producto</legend>
+
+                    <label for="nombreProducto">Nombre del producto:</label>
+                    <input type="text" id="nombreProducto" placeholder="Nombre del producto" name="nombreP" required>
+
+                    <label for="precioProducto">Precio:</label>
+                    <input type="number" min="0" max="20000" step="1" id="precioProducto" name="precioP" required placeholder="Costo (min: 0, max: 20000)">
+
+                    <label for="descripcionProducto">Descripción del producto:</label>
+                    <input type="text" id="descripcionProducto" placeholder="Descripción del producto" name="descripcionP" required>
+
+                    <label for="imagenProducto">URL de la imagen del producto:</label>
+                    <input type="text" id="imagenProducto" placeholder="URL de la imagen del producto" name="urlImgP" required>
+
+                    <input type="submit" value="Agregar" class="btn btn-primary">
+                </fieldset>
+
+                <!--solo select y radio button se acceden a su valor por medio de value y no por name-->
+            </form>
+        </div>
+
+        <%- include('partials/_footer') %>

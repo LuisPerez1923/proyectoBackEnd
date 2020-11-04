@@ -1,0 +1,60 @@
+<%- include('partials/_header') %>
+    <div class="container">
+        <div class="row">
+            <!--Formulario-->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="nombre" id="" placeholder="Inserta nombre del contacto" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="numAdress" id="" placeholder="Inserta el número de la casa" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="celNumber" id="" placeholder="Inserta número de teléfono" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="relacion" id="" placeholder="Inserta el parentesco con el contacto" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Agregar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Tabla de datos-->
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th># Casa</th>
+                            <th>Teléfono</th>
+                            <th>Parentesco</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < contactos.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <td><%= contactos[i].nombre %></td>
+                                <td><%= contactos[i].numAdress %></td>
+                                <td><%= contactos[i].celNumber %></td>
+                                <td><%= contactos[i].relacion %></td>
+                                <td>
+                                    <a href="/delete/<%= contactos[i]._id %>" class="btn btn-danger" >Borrar</a>
+                                    <a href="/edit/<%= contactos[i]._id %>" class="btn btn-info">Editar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<%- include('partials/_footer') %>

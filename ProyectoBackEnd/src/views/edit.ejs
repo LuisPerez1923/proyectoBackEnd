@@ -1,0 +1,33 @@
+<%- include('partials/_header2') %>
+    <div class="container">
+        <div class="row">
+            <!--Formulario-->
+            <div class="formulario-registro contenedor">
+                <h2 class="centrar-texto">Editar datos de producto</h2>
+                <form class="agregarProducto" action="/edit/<%= producto._id %>" method="POST">
+                    <fieldset>
+                        <legend>Información del Producto</legend>
+    
+                        <label for="nombreProducto">Nombre del producto:</label>
+                        <input type="text" id="nombreProducto" value="<%= producto.nombreP %>" name="nombreP" required>
+    
+                        <label for="precioProducto">Precio:</label>
+                        <input type="number" min="0" max="20000" step="1" id="precioProducto" name="precioP" required value="<%= producto.precioP %>">
+    
+                        <label for="descripcionProducto">Descripción del producto:</label>
+                        <input type="text" id="descripcionProducto" value="<%= producto.descripcionP %>" name="descripcionP" required>
+    
+                        <label for="imagenProducto">URL de la imagen del producto:</label>
+                        <input type="text" id="imagenProducto" value="<%= producto.urlImgP %>" name="urlImgP" required>
+    
+                        <input type="submit" value="Agregar" class="btn btn-primary">
+                    </fieldset>
+    
+                    <!--solo select y radio button se acceden a su valor por medio de value y no por name-->
+                </form>
+            </div>
+            
+       
+        </div>
+    </div>
+<%- include('partials/_footer') %>
